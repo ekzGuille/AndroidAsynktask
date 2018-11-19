@@ -34,13 +34,13 @@ public class UserAction {
 		String pass = request.getParameter("PASS");
 
 		Gson gson = new Gson();
-		
+
 		respuesta = "" + user + " " + pass;
 		if (user != null && pass != null) {
 			ClienteDAO clienteDAO = new ClienteDAO();
 			cliente = clienteDAO.findByNamePass(user, pass);
 			if (cliente != null) {
-				respuesta = gson.toJson(cliente);
+				respuesta = "[" + gson.toJson(cliente) + "]";
 			} else {
 				respuesta = "no se ha encontrado";
 			}

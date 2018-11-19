@@ -61,7 +61,7 @@ public class LoginActivity extends Activity {
                 parametros.put("PASS", edtPass.getText().toString());
 
                 TareaSegundoPlano tarea = new TareaSegundoPlano(parametros);
-                tarea.execute("http://localhost:8080/AndroidAsynktaskBack/Controller");
+                tarea.execute("http://192.168.20.129:8080/AndroidAsynktaskBack/Controller");
             }
         });
     }
@@ -90,10 +90,10 @@ public class LoginActivity extends Activity {
             if (aBoolean) {
                 if (listaClientes != null && listaClientes.size() > 0) {
                     Cliente cliente = listaClientes.get(0);
-                    Toast.makeText(LoginActivity.this,
-                            "Usuario Correcto" + "Id="
-                                    + cliente.getIdUsuario(),
+                    Toast.makeText(LoginActivity.this, "Usuario Correcto!!" + "\nId=" + cliente.getIdUsuario() + "\nEmail=" + cliente.getEmail(),
                             Toast.LENGTH_LONG).show();
+                }else{
+                    Toast.makeText(LoginActivity.this, "No se ha encontrado el usuario", Toast.LENGTH_LONG).show();
                 }
             }
         }

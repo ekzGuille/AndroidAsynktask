@@ -11,9 +11,9 @@ public class Cliente {
     private String email;
     private String pass;
 
-    private final static String ID_USUARIO = "ID_USUARIO";
-    private final static String EMAIL = "EMAIL";
-    private final static String PASS = "PASS";
+    private final static String ID_USUARIO = "idUsuario";
+    private final static String EMAIL = "email";
+    private final static String PASS = "pass";
 
 
     public int getIdUsuario() {
