@@ -3,15 +3,15 @@ package model.beans;
 public class Cliente {
 
 	private int idUsuario;
-	private String user;
+	private String email;
 	private String pass;
 
 	public Cliente() {
 	}
 
-	public Cliente(int idUsuario, String user, String pass) {
+	public Cliente(int idUsuario, String email, String pass) {
 		this.idUsuario = idUsuario;
-		this.user = user;
+		this.email = email;
 		this.pass = pass;
 	}
 
@@ -23,12 +23,12 @@ public class Cliente {
 		this.idUsuario = idUsuario;
 	}
 
-	public String getUser() {
-		return user;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setUser(String user) {
-		this.user = user;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getPass() {

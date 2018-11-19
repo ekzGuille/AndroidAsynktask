@@ -8,8 +8,9 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="src/model/drivers/mysql-connector-java-8.0.12.jar"/>
-	<classpathentry kind="lib" path="src/model/drivers/ojdbc6.jar"/>
-	<classpathentry kind="lib" path="src/model/drivers/servlet-api.jar"/>
+	<classpathentry kind="lib" path="/Volumes/ERMO_32GB/GSINFORMATICA/2SI/DISPOSITIVOS MÓVILES Y MULTIMEDIA/1ª EVALUACIÓN/AndroidAsynkTaskGithub/ProyectoEclipse/apache-tomcat-9.0.12/lib/gson-2.8.5.jar"/>
+	<classpathentry kind="lib" path="/Volumes/ERMO_32GB/GSINFORMATICA/2SI/DISPOSITIVOS MÓVILES Y MULTIMEDIA/1ª EVALUACIÓN/AndroidAsynkTaskGithub/ProyectoEclipse/apache-tomcat-9.0.12/lib/mysql-connector-java-8.0.12.jar"/>
+	<classpathentry kind="lib" path="/Volumes/ERMO_32GB/GSINFORMATICA/2SI/DISPOSITIVOS MÓVILES Y MULTIMEDIA/1ª EVALUACIÓN/AndroidAsynkTaskGithub/ProyectoEclipse/apache-tomcat-9.0.12/lib/ojdbc6.jar"/>
+	<classpathentry kind="lib" path="/Volumes/ERMO_32GB/GSINFORMATICA/2SI/DISPOSITIVOS MÓVILES Y MULTIMEDIA/1ª EVALUACIÓN/AndroidAsynkTaskGithub/ProyectoEclipse/apache-tomcat-9.0.12/lib/servlet-api.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

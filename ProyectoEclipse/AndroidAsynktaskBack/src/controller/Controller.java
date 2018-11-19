@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.dao.UserAction;
+import controller.action.UserAction;
 
 /**
  * Servlet implementation class Controller
@@ -33,7 +33,6 @@ public class Controller extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		String respuesta = "";
 		String actionReived = request.getParameter("ACTION");
-		System.out.println(actionReived);
 		String[] actions = actionReived.split("\\.");
 
 		switch (actions[0]) {
