@@ -61,7 +61,7 @@ public class LoginActivity extends Activity {
                 parametros.put("PASS", edtPass.getText().toString());
 
                 TareaSegundoPlano tarea = new TareaSegundoPlano(parametros);
-                tarea.execute("http://192.168.42.244/glovo/Controller.php");
+                tarea.execute("http://localhost:8080/AndroidAsynktaskBack/Controller");
             }
         });
     }
@@ -76,7 +76,7 @@ public class LoginActivity extends Activity {
 
         @Override
         protected Boolean doInBackground(String... params) {
-            String url = params[0];//http://192.168.42.244/glovo/Controller.php
+            String url = params[0];//http://localhost:8080/AndroidAsynktaskBack/Controller
             // Importantísimo la clase "POST":
             // Hacer una petición al servidor y recuperar la respuesta en JSON.
             Post post = new Post();
