@@ -18,10 +18,12 @@ import android.widget.Toast;
 import com.seas.usuario.grouponandroidstudiov2.beans.Cliente;
 import com.seas.usuario.grouponandroidstudiov2.datos.GrouponData;
 import com.seas.usuario.grouponandroidstudiov2.threads.ServiceLogin;
+import com.seas.usuario.grouponandroidstudiov2.tools.IPGetter;
 import com.seas.usuario.grouponandroidstudiov2.tools.Post;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.xml.sax.helpers.LocatorImpl;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -44,6 +46,8 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        final String IP_LOCAL_SERVIDOR = "192.168.20.129";
+
         loginActivity = this;
 
         edtEmail = (EditText) findViewById(R.id.edtEmail);
@@ -61,7 +65,7 @@ public class LoginActivity extends Activity {
                 parametros.put("PASS", edtPass.getText().toString());
 
                 TareaSegundoPlano tarea = new TareaSegundoPlano(parametros);
-                tarea.execute("http://192.168.20.129:8080/AndroidAsynktaskBack/Controller");
+                tarea.execute("http://" + IP_LOCAL_SERVIDOR + ":8080/AndroidAsynktaskBack/Controller");
             }
         });
     }
@@ -92,7 +96,10 @@ public class LoginActivity extends Activity {
                     Cliente cliente = listaClientes.get(0);
                     Toast.makeText(LoginActivity.this, "Usuario Correcto!!" + "\nId=" + cliente.getIdUsuario() + "\nEmail=" + cliente.getEmail(),
                             Toast.LENGTH_LONG).show();
-                }else{
+                    Intent intent = new Intent(LoginActivity.this, ListaOfertasActivity.class);
+                    intent.putExtra("cliente", cliente);
+                    startActivity(intent);
+                } else {
                     Toast.makeText(LoginActivity.this, "No se ha encontrado el usuario", Toast.LENGTH_LONG).show();
                 }
             }

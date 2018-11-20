@@ -33,6 +33,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ListaOfertasActivity"
+            android:parentActivityName=".LoginActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".LoginActivity"/>
+        </activity>
     </application>
 
 </manifest>
