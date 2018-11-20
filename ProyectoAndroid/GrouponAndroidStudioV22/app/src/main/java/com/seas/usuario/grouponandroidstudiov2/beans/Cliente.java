@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Cliente implements Serializable {
+
     private int idUsuario;
     private String email;
     private String pass;
@@ -57,6 +58,7 @@ public class Cliente implements Serializable {
                 lista.add(cliente);
             }
         } catch (JSONException e) {
+            //TODO ARREGLAR
             e.printStackTrace();
         }
         return lista;

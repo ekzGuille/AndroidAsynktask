@@ -15,6 +15,7 @@ import com.seas.usuario.grouponandroidstudiov2.adaptadores.AdaptadorLocales;
 import com.seas.usuario.grouponandroidstudiov2.beans.Cliente;
 import com.seas.usuario.grouponandroidstudiov2.beans.Local;
 import com.seas.usuario.grouponandroidstudiov2.datos.GrouponData;
+import com.seas.usuario.grouponandroidstudiov2.tools.IPGetter;
 import com.seas.usuario.grouponandroidstudiov2.tools.Post;
 
 import org.json.JSONArray;
@@ -28,7 +29,10 @@ public class ListaOfertasActivity extends Activity {
     private ListView lv;
     private TextView tx;
 
-    final String IP_LOCAL_SERVIDOR = "192.168.20.129";
+    //private final String IP_LOCAL_SERVIDOR = "192.168.20.129";
+    private final String IP_LOCAL_SERVIDOR = IPGetter.getInstance().getIP();
+    private final String URL_FOTO = IP_LOCAL_SERVIDOR + ":8080/AndroidAsynktaskBack/images/pelicula/";
+
 
     private static ListaOfertasActivity listaOfertasActivity = null;
 
@@ -61,7 +65,7 @@ public class ListaOfertasActivity extends Activity {
             }
         });
         HashMap<String, String> parametros = new HashMap<String, String>();
-        parametros.put("tipo", "Hospitales");
+        parametros.put("ACTION", "Pelicula.listAll");
 
         TareaSegundoPlano tarea = new TareaSegundoPlano(parametros);
         tarea.
@@ -117,7 +121,7 @@ public class ListaOfertasActivity extends Activity {
                 if (resp && listaLocales != null && listaLocales.size() > 0) {
                     for (Local local : listaLocales) {
                         local.
-                                setUrlImagen("http://" + IP_LOCAL_SERVIDOR + "/images/" + local.getUrlImagen());
+                                setUrlImagen(URL_FOTO + local.getUrlImagen());
                     }
                     adaptadorLocales = new
                             AdaptadorLocales(getBaseContext(), listaLocales);

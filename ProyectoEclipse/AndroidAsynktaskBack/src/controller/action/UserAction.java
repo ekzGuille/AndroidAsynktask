@@ -35,7 +35,6 @@ public class UserAction {
 
 		Gson gson = new Gson();
 
-		respuesta = "" + user + " " + pass;
 		if (user != null && pass != null) {
 			ClienteDAO clienteDAO = new ClienteDAO();
 			cliente = clienteDAO.findByNamePass(user, pass);

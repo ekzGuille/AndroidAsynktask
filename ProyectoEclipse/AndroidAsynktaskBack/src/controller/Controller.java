@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import controller.action.PeliculaAction;
 import controller.action.UserAction;
 
 /**
@@ -39,6 +40,11 @@ public class Controller extends HttpServlet {
 		case "User":
 			respuesta = new UserAction().execute(request, response);
 			break;
+			
+		case "Pelicula":
+			respuesta = new PeliculaAction().execute(request, response);
+			break;
+			
 
 		default:
 			break;

@@ -33,6 +33,9 @@ public class LoginActivity extends Activity {
     private EditText edtPass;
     private Button btnLogin;
 
+    //private final String IP_LOCAL_SERVIDOR = "192.168.20.129";
+    private final String IP_LOCAL_SERVIDOR = IPGetter.getInstance().getIP();
+
     /*Patrón Singleton*/
     private static LoginActivity loginActivity;
 
@@ -45,8 +48,6 @@ public class LoginActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        final String IP_LOCAL_SERVIDOR = "192.168.20.129";
 
         loginActivity = this;
 
