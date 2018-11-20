@@ -123,7 +123,6 @@ public class Post {
                 respuesta = sb.toString();
                 jArray = new JSONArray(respuesta);
             }
-            Log.e("log_tag", "Cadena JSon " + respuesta);
         } catch (Exception e) {
             Log.e("log_tag", "Error converting result " + e.toString());
         } finally {

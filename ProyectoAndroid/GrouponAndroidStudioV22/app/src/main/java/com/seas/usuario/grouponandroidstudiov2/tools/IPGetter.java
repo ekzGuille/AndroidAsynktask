@@ -7,14 +7,14 @@ public class IPGetter {
 
     private static IPGetter clase;
     final static String IP_LOCAL_SERVIDOR = "192.168.20.129";
-    private InetAddress IP;
+//    private InetAddress IP;
 
     private IPGetter() {
-        try {
-            IP = InetAddress.getLocalHost();
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            IP = InetAddress.getLocalHost();
+//        } catch (UnknownHostException e) {
+//            e.printStackTrace();
+//        }
     }
 
     public static IPGetter getInstance(){

@@ -11,9 +11,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.seas.usuario.grouponandroidstudiov2.adaptadores.AdaptadorLocales;
+import com.seas.usuario.grouponandroidstudiov2.adaptadores.AdaptadorPeliculas;
 import com.seas.usuario.grouponandroidstudiov2.beans.Cliente;
 import com.seas.usuario.grouponandroidstudiov2.beans.Local;
+import com.seas.usuario.grouponandroidstudiov2.beans.Pelicula;
 import com.seas.usuario.grouponandroidstudiov2.datos.GrouponData;
 import com.seas.usuario.grouponandroidstudiov2.tools.IPGetter;
 import com.seas.usuario.grouponandroidstudiov2.tools.Post;
@@ -24,8 +25,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ListaOfertasActivity extends Activity {
-    private ArrayList<Local> m_locals = new ArrayList<Local>();
-    private AdaptadorLocales adaptadorLocales;
+    private ArrayList<Pelicula> m_pelis = new ArrayList<Pelicula>();
+    private AdaptadorPeliculas adaptadorPeliculas;
     private ListView lv;
     private TextView tx;
 
@@ -44,11 +45,11 @@ public class ListaOfertasActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        TextView tx = (TextView) findViewById(R.id.textLoggedUser);
+        tx = (TextView) findViewById(R.id.textLoggedUser);
 
-        Cliente cliente = (Cliente) getIntent().getSerializableExtra("cliente");
+        Cliente cliente = (Cliente) getIntent().getExtras().getSerializable("cliente");
 
-        tx.setText("Logged as: " + cliente.getEmail());
+        //tx.setText("Logged as: " + cliente.getEmail());
 
         setContentView(R.layout.activity_lista_ofertas);
         listaOfertasActivity = this;
@@ -80,7 +81,7 @@ public class ListaOfertasActivity extends Activity {
     }
 
     class TareaSegundoPlano extends AsyncTask<String, Integer, Boolean> {
-        private ArrayList<Local> listaLocales = null;
+        private ArrayList<Pelicula> listaPeliculas = null;
         private HashMap<String, String> parametros = null;
 
 
@@ -101,7 +102,7 @@ public class ListaOfertasActivity extends Activity {
 
                 JSONArray result = post.
                         getServerDataPost(parametros, url_select);
-                listaLocales = Local.getArrayListFromJSon(result);
+                listaPeliculas = Pelicula.getArrayListFromJSon(result);
             } catch (Exception e) {
                 Log.e("log_tag", "Error in http connection " + e.toString());
                 //messageUser = "Error al conectar con el servidor. ";
@@ -118,14 +119,13 @@ public class ListaOfertasActivity extends Activity {
         @Override
         protected void onPostExecute(Boolean resp) {
             try {
-                if (resp && listaLocales != null && listaLocales.size() > 0) {
-                    for (Local local : listaLocales) {
-                        local.
-                                setUrlImagen(URL_FOTO + local.getUrlImagen());
+                if (resp && listaPeliculas != null && listaPeliculas.size() > 0) {
+                    for (Pelicula pelicula : listaPeliculas) {
+                        pelicula.setUrlImagen(URL_FOTO + pelicula.getUrlImagen());
                     }
-                    adaptadorLocales = new
-                            AdaptadorLocales(getBaseContext(), listaLocales);
-                    lv.setAdapter(adaptadorLocales);
+                    adaptadorPeliculas = new
+                            AdaptadorPeliculas(getBaseContext(), listaPeliculas);
+                    lv.setAdapter(adaptadorPeliculas);
                 } else {
                     Toast.makeText(ListaOfertasActivity.getInstance().getBaseContext(), "" +
                             "Lista incorrecta. ", Toast.LENGTH_SHORT).show();
