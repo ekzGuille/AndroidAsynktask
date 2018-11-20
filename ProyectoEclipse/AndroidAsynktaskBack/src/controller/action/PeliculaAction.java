@@ -64,7 +64,7 @@ public class PeliculaAction {
 		lstPelicula = peliculaDAO.findAll();
 		if (lstPelicula != null) {
 			for (Pelicula pelicula : lstPelicula) {
-				respuesta += "[" + gson.toJson(pelicula) + "],";
+				respuesta += gson.toJson(pelicula) + ",";
 			}
 			if (respuesta.endsWith(",")) {
 				respuesta = respuesta.substring(0, respuesta.length() - 1);

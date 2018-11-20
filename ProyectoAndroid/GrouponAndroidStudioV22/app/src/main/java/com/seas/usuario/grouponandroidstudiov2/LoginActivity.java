@@ -95,8 +95,7 @@ public class LoginActivity extends Activity {
             if (aBoolean) {
                 if (listaClientes != null && listaClientes.size() > 0) {
                     Cliente cliente = listaClientes.get(0);
-                    Toast.makeText(LoginActivity.this, "Usuario Correcto!!" + "\nId=" + cliente.getIdUsuario() + "\nEmail=" + cliente.getEmail(),
-                            Toast.LENGTH_LONG).show();
+//                    Toast.makeText(LoginActivity.this, "Usuario Correcto!!" + "\nId=" + cliente.getIdUsuario() + "\nEmail=" + cliente.getEmail(), Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(LoginActivity.this, ListaOfertasActivity.class);
                     intent.putExtra("cliente", cliente);
                     startActivity(intent);

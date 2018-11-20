@@ -41,7 +41,7 @@ public class UserAction {
 			if (cliente != null) {
 				respuesta = "[" + gson.toJson(cliente) + "]";
 			} else {
-				respuesta = "no se ha encontrado";
+				respuesta = "[]";
 			}
 		}
 

@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 import com.seas.usuario.grouponandroidstudiov2.adaptadores.AdaptadorPeliculas;
 import com.seas.usuario.grouponandroidstudiov2.beans.Cliente;
-import com.seas.usuario.grouponandroidstudiov2.beans.Local;
 import com.seas.usuario.grouponandroidstudiov2.beans.Pelicula;
 import com.seas.usuario.grouponandroidstudiov2.datos.GrouponData;
 import com.seas.usuario.grouponandroidstudiov2.tools.IPGetter;
@@ -44,33 +43,31 @@ public class ListaOfertasActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_lista_ofertas);
+        listaOfertasActivity = this;
 
         tx = (TextView) findViewById(R.id.textLoggedUser);
 
         Cliente cliente = (Cliente) getIntent().getExtras().getSerializable("cliente");
 
-        //tx.setText("Logged as: " + cliente.getEmail());
-
-        setContentView(R.layout.activity_lista_ofertas);
-        listaOfertasActivity = this;
+        tx.setText("Logged as: " + cliente.getEmail());
         lv = (ListView) findViewById(R.id.listView);
         lv.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position,
                                     long id) {
-                Local local = (Local) parent.getItemAtPosition(position);
+                Pelicula pelicula = (Pelicula) parent.getItemAtPosition(position);
 
-                // Almaceno el Local seleccionado para que sea accesible
+                // Almacenar la pelicula seleccionada para que sea accesible
                 // desde cualquier punto de la aplicacion
-                GrouponData.setLocalSeleccionado(local);
+                GrouponData.setPeliculaSeleccionada(pelicula);
             }
         });
         HashMap<String, String> parametros = new HashMap<String, String>();
         parametros.put("ACTION", "Pelicula.listAll");
 
         TareaSegundoPlano tarea = new TareaSegundoPlano(parametros);
-        tarea.
-                execute("http://" + IP_LOCAL_SERVIDOR + ":8080/AndroidAsynktaskBack/Controller");
+        tarea.execute("http://" + IP_LOCAL_SERVIDOR + ":8080/AndroidAsynktaskBack/Controller");
 
 
     }
@@ -100,8 +97,7 @@ public class ListaOfertasActivity extends Activity {
             try {
                 Post post = new Post();
 
-                JSONArray result = post.
-                        getServerDataPost(parametros, url_select);
+                JSONArray result = post.getServerDataPost(parametros, url_select);
                 listaPeliculas = Pelicula.getArrayListFromJSon(result);
             } catch (Exception e) {
                 Log.e("log_tag", "Error in http connection " + e.toString());
@@ -123,12 +119,10 @@ public class ListaOfertasActivity extends Activity {
                     for (Pelicula pelicula : listaPeliculas) {
                         pelicula.setUrlImagen(URL_FOTO + pelicula.getUrlImagen());
                     }
-                    adaptadorPeliculas = new
-                            AdaptadorPeliculas(getBaseContext(), listaPeliculas);
+                    adaptadorPeliculas = new AdaptadorPeliculas(getBaseContext(), listaPeliculas);
                     lv.setAdapter(adaptadorPeliculas);
                 } else {
-                    Toast.makeText(ListaOfertasActivity.getInstance().getBaseContext(), "" +
-                            "Lista incorrecta. ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ListaOfertasActivity.getInstance().getBaseContext(), "Lista incorrecta. ", Toast.LENGTH_SHORT).show();
                 }
             } catch (Exception e) {
                 // TODO: handle exception

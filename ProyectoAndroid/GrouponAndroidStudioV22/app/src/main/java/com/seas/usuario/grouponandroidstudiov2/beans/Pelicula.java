@@ -14,7 +14,7 @@ public class Pelicula {
     private String peliculaName;
     private String urlImagen;
 
-    private final static String ID_PELICULA = "idPelicla";
+    private final static String ID_PELICULA = "idPelicula";
     private final static String TITULO = "titulo";
     private final static String FOTO = "foto";
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 19-11-2018 a las 10:01:38
+-- Tiempo de generación: 20-11-2018 a las 23:08:24
 -- Versión del servidor: 10.1.31-MariaDB
 -- Versión de PHP: 7.2.3
 
@@ -24,6 +24,33 @@ SET time_zone = "+00:00";
 DROP DATABASE IF EXISTS `asynktaskandroid`;
 CREATE DATABASE IF NOT EXISTS `asynktaskandroid` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish2_ci;
 USE `asynktaskandroid`;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pelicula`
+--
+
+CREATE TABLE `pelicula` (
+  `ID_PELICULA` int(11) NOT NULL,
+  `TITULO` varchar(25) COLLATE utf8_spanish2_ci NOT NULL,
+  `FOTO` varchar(50) COLLATE utf8_spanish2_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `pelicula`
+--
+
+INSERT INTO `pelicula` (`ID_PELICULA`, `TITULO`, `FOTO`) VALUES
+(1, 'Deadpool', 'Deadpool_caratula.jpg'),
+(2, 'Jonh Wick', 'JohnWick_caratula.jpg'),
+(3, 'Matrix', 'Matrix_caratula.jpg'),
+(4, 'Piratas del Caribe', 'PiratasDelCaribe_caratula.jpg'),
+(5, 'X-Men: First Class', 'XMenFirstClass_caratula.jpg'),
+(6, 'Dr. Dolittle', 'DrDolittle_caratula.jpg'),
+(7, 'El Quinto Elemento', 'ElQuintoElemento_caratula.jpg'),
+(8, 'Kingsman', 'Kingsman_caratula.jpg'),
+(9, 'Mi gran noche', 'MiGranNoche_caratula.jpg');
 
 -- --------------------------------------------------------
 
@@ -76,11 +103,18 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`ID_USUARIO`, `EMAIL`, `PASS`) VALUES
 (1, 'a@svalero.com', '1234'),
-(2, 'b@svalero.com', '1234');
+(2, 'b@svalero.com', '1234'),
+(3, 'c@svalero.com', '1234');
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `pelicula`
+--
+ALTER TABLE `pelicula`
+  ADD PRIMARY KEY (`ID_PELICULA`);
 
 --
 -- Indices de la tabla `seas01`
@@ -99,6 +133,12 @@ ALTER TABLE `usuario`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `pelicula`
+--
+ALTER TABLE `pelicula`
+  MODIFY `ID_PELICULA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT de la tabla `seas01`
 --
 ALTER TABLE `seas01`
@@ -108,7 +148,7 @@ ALTER TABLE `seas01`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `ID_USUARIO` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID_USUARIO` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
