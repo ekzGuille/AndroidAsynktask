@@ -39,9 +39,9 @@ public class PeliculaAction {
 		String respuesta = "";
 		Pelicula pelicula = null;
 		String id = request.getParameter("ID_PELICULA");
-		Gson gson = new Gson();
 
 		if (id != null) {
+			Gson gson = new Gson();
 			PeliculaDAO peliculaDAO = new PeliculaDAO();
 			pelicula = peliculaDAO.findById(Integer.parseInt(id));
 			if (pelicula != null) {
@@ -63,15 +63,11 @@ public class PeliculaAction {
 		PeliculaDAO peliculaDAO = new PeliculaDAO();
 		lstPelicula = peliculaDAO.findAll();
 		if (lstPelicula != null) {
-			for (Pelicula pelicula : lstPelicula) {
-				respuesta += gson.toJson(pelicula) + ",";
-			}
-			if (respuesta.endsWith(",")) {
-				respuesta = respuesta.substring(0, respuesta.length() - 1);
-			}
+			respuesta = gson.toJson(lstPelicula);
+		}else {
+			respuesta = "[]";
 		}
-
-		return "[" + respuesta + "]";
+		return respuesta;
 	}
 
 }

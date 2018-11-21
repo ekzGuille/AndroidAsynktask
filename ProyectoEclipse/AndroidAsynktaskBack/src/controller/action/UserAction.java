@@ -33,9 +33,9 @@ public class UserAction {
 		String user = request.getParameter("USER");
 		String pass = request.getParameter("PASS");
 
-		Gson gson = new Gson();
 
 		if (user != null && pass != null) {
+			Gson gson = new Gson();
 			ClienteDAO clienteDAO = new ClienteDAO();
 			cliente = clienteDAO.findByNamePass(user, pass);
 			if (cliente != null) {
