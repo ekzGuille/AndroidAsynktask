@@ -6,16 +6,9 @@ import java.net.UnknownHostException;
 public class IPGetter {
 
     private static IPGetter clase;
-//    final static String IP_LOCAL_SERVIDOR = "192.168.20.129";
-    final static String IP_LOCAL_SERVIDOR = "192.168.1.42";
-//    private InetAddress IP;
+    final static String IP_LOCAL_SERVIDOR = "192.168.20.129";
 
     private IPGetter() {
-//        try {
-//            IP = InetAddress.getLocalHost();
-//        } catch (UnknownHostException e) {
-//            e.printStackTrace();
-//        }
     }
 
     public static IPGetter getInstance(){
@@ -24,10 +17,6 @@ public class IPGetter {
         }
         return clase;
     }
-
-//    public InetAddress getIP() {
-//        return IP;
-//    }
 
     public String getIP(){
         return IP_LOCAL_SERVIDOR;

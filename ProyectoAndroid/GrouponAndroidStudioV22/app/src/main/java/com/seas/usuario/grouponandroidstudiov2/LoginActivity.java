@@ -33,7 +33,6 @@ public class LoginActivity extends Activity {
     private EditText edtPass;
     private Button btnLogin;
 
-    //private final String IP_LOCAL_SERVIDOR = "192.168.20.129";
     private final String IP_LOCAL_SERVIDOR = IPGetter.getInstance().getIP();
 
     /*Patrón Singleton*/

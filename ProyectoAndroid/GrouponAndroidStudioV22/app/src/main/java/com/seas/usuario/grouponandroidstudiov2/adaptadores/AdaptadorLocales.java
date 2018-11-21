@@ -29,7 +29,7 @@ public class AdaptadorLocales extends ArrayAdapter<Local> {
 	
 		public AdaptadorLocales(Context context,
                                 ArrayList<Local> locales) {
-			super(context, R.layout.list_item, locales);
+			super(context, R.layout.list_item_relative, locales);
 			this.items = locales;
 			this.context = context;
 		}
@@ -41,7 +41,7 @@ public class AdaptadorLocales extends ArrayAdapter<Local> {
 				LayoutInflater layoutInflater =
 						(LayoutInflater) LayoutInflater.
 						from(context);
-				convertView = layoutInflater.inflate(R.layout.list_item, null);
+				convertView = layoutInflater.inflate(R.layout.list_item_relative, null);
 				holder = new ViewHolder();
 				holder.icon = (ImageView) convertView.findViewById(R.id.icon);
 				holder.text = (TextView) convertView.findViewById(R.id.row_toptext);

@@ -29,9 +29,8 @@ public class ListaOfertasActivity extends Activity {
     private ListView lv;
     private TextView tx;
 
-    //private final String IP_LOCAL_SERVIDOR = "192.168.20.129";
     private final String IP_LOCAL_SERVIDOR = IPGetter.getInstance().getIP();
-    private final String URL_FOTO = IP_LOCAL_SERVIDOR + ":8080/AndroidAsynktaskBack/images/pelicula/";
+    private final String PATH_FOTO = "http://" + IP_LOCAL_SERVIDOR + ":8080/AndroidAsynktaskBack/images/pelicula/";
 
 
     private static ListaOfertasActivity listaOfertasActivity = null;
@@ -117,7 +116,7 @@ public class ListaOfertasActivity extends Activity {
             try {
                 if (resp && listaPeliculas != null && listaPeliculas.size() > 0) {
                     for (Pelicula pelicula : listaPeliculas) {
-                        pelicula.setUrlImagen(URL_FOTO + pelicula.getUrlImagen());
+                        pelicula.setUrlImagen(PATH_FOTO + pelicula.getUrlImagen());
                     }
                     adaptadorPeliculas = new AdaptadorPeliculas(getBaseContext(), listaPeliculas);
                     lv.setAdapter(adaptadorPeliculas);
